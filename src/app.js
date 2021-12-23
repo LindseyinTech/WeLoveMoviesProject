@@ -8,7 +8,7 @@ const cors = require("cors");
 
 // process.env.NODE_ENV
 // process.env.NODE_ENV === 'production' : productionUrl : devUrl
-app.use(cors({origin: "http://localhost:3000"}));
+app.use(cors({origin: "*"}));
 
 app.use(express.json());
 

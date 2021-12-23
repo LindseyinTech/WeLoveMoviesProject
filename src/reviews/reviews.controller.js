@@ -13,7 +13,6 @@ async function reviewExists(req, res, next) {
 }
 
 function hasValidProperties(req, res, next) {
-  //console.log("valid properties function reached")
   const { data = {} } = req.body;
   const invalidFields = Object.keys(data).filter((field) => !VALID_PROPERTIES.includes(field))
 

@@ -9,6 +9,7 @@ const cors = require("cors");
 // process.env.NODE_ENV
 // process.env.NODE_ENV === 'production' : productionUrl : devUrl
 app.use(cors({origin: "http://localhost:3000"}));
+
 app.use(express.json());
 
 app.use("/movies", moviesRouter);
@@ -17,9 +18,9 @@ app.use("/reviews", reviewsRouter);
 
 
 // Not Found Handler
-// app.use((req, res, next) => {
-//   next({ status: 404, message: `Not found: ${req.originalUrl}` });
-// });
+app.use((req, res, next) => {
+  next({ status: 404, message: `Not found: ${req.originalUrl}` });
+});
 
 // Error Handler
 app.use((error, req, res, next) => {

@@ -1,8 +1,7 @@
 const service = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const { whereNotExists } = require("../db/connection");
 
-async function list(req, res) {
+async function list(req, res, next) {
   const isShowing = req.query.is_showing;
   let data = {}
   if (isShowing) {
@@ -12,6 +11,7 @@ async function list(req, res) {
      data = await service.list();
     res.json({ data });
   } 
+  next({status: 404, message: "List /movies failed."})
 }
 
 async function validMovieId(req, res, next) {

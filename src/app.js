@@ -1,15 +1,11 @@
-if (process.env.USER) require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const moviesRouter = require("./movies/movies.router");
-const reviewsRouter = require("./reviews/reviews.router");
 const theatersRouter = require("./theaters/theaters.router");
-const cors = require("cors");
+const reviewsRouter = require("./reviews/reviews.router");
 
-// process.env.NODE_ENV
-// process.env.NODE_ENV === 'production' : productionUrl : devUrl
-app.use(cors({origin: "http://localhost:3000"}));
-
+app.use(cors());
 app.use(express.json());
 
 app.use("/movies", moviesRouter);

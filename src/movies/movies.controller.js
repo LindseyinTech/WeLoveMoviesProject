@@ -4,11 +4,12 @@ const { whereNotExists } = require("../db/connection");
 
 async function list(req, res) {
   const isShowing = req.query.is_showing;
+  let data = {}
   if (isShowing) {
-    const data = await service.listAllShowing();
+     data = await service.listAllShowing();
     res.json({ data });
   } else if (!isShowing){
-    const data = await service.list();
+     data = await service.list();
     res.json({ data });
   } 
 }

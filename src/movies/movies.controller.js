@@ -6,12 +6,10 @@ async function list(req, res, next) {
   let data = {}
   if (isShowing) {
      data = await service.listAllShowing();
-    res.json({ data });
   } else if (!isShowing){
      data = await service.list();
-    res.json({ data });
   } 
-  next({status: 404, message: "List /movies failed."})
+  res.json({data})
 }
 
 async function validMovieId(req, res, next) {
